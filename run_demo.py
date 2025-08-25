@@ -15,8 +15,8 @@ import argparse
 if __name__=='__main__':
   parser = argparse.ArgumentParser()
   code_dir = os.path.dirname(os.path.realpath(__file__))
-  parser.add_argument('--mesh_file', type=str, default=f'{code_dir}/demo_data/mustard0/mesh/textured_simple.obj')
-  parser.add_argument('--test_scene_dir', type=str, default=f'{code_dir}/demo_data/mustard0')
+  parser.add_argument('--mesh_file', type=str, default=f'{code_dir}/demo_data/honeycomb_ml_2/mesh/honeycomb_1.obj')
+  parser.add_argument('--test_scene_dir', type=str, default=f'{code_dir}/demo_data/honeycomb_ml_view2')
   parser.add_argument('--est_refine_iter', type=int, default=5)
   parser.add_argument('--track_refine_iter', type=int, default=2)
   parser.add_argument('--debug', type=int, default=1)
@@ -26,7 +26,14 @@ if __name__=='__main__':
   set_logging_format()
   set_seed(0)
 
-  mesh = trimesh.load(args.mesh_file)
+  #mesh = trimesh.load(args.mesh_file)
+  scene_or_mesh = trimesh.load(args.mesh_file)
+
+  if isinstance(scene_or_mesh, trimesh.Scene):
+    # merge all geometries in the scene into one mesh
+    mesh = trimesh.util.concatenate(tuple(scene_or_mesh.geometry.values()))
+  else:
+    mesh = scene_or_mesh
 
   debug = args.debug
   debug_dir = args.debug_dir
@@ -62,15 +69,23 @@ if __name__=='__main__':
     else:
       pose = est.track_one(rgb=color, depth=depth, K=reader.K, iteration=args.track_refine_iter)
 
+    print("MAKE DIR")
     os.makedirs(f'{debug_dir}/ob_in_cam', exist_ok=True)
     np.savetxt(f'{debug_dir}/ob_in_cam/{reader.id_strs[i]}.txt', pose.reshape(4,4))
+
+    pose_path = f'{debug_dir}/ob_in_cam/{reader.id_strs[i]}.txt'
+    print(f"[DEBUG] Saving pose to: {pose_path}")
 
     if debug>=1:
       center_pose = pose@np.linalg.inv(to_origin)
       vis = draw_posed_3d_box(reader.K, img=color, ob_in_cam=center_pose, bbox=bbox)
       vis = draw_xyz_axis(color, ob_in_cam=center_pose, scale=0.1, K=reader.K, thickness=3, transparency=0, is_input_rgb=True)
-      cv2.imshow('1', vis[...,::-1])
-      cv2.waitKey(1)
+      #cv2.imshow('1', vis[...,::-1])
+      #cv2.waitKey(1)
+      # Save visualization instead of displaying
+      out_path = f'{debug_dir}/track_vis/{reader.id_strs[i]}_overlay.png'
+      cv2.imwrite(out_path, vis)
+      logging.info(f'Saved overlay visualization to {out_path}')
 
 
     if debug>=2:
