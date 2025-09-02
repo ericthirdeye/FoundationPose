@@ -1,0 +1,82 @@
+# Blender 3.6.2 MTL File: 'honeycomb_1.blend'
+# www.blender.org
+
+newmtl 2x4_end_grain
+Ns 250.000000
+Ka 1.000000 1.000000 1.000000
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.500000
+d 1.000000
+illum 2
+map_Kd D:/projects/SBIR/SafeDropDocs/models/2x4_end_grain.jpg
+
+newmtl 2x4_long
+Ns 250.000000
+Ka 1.000000 1.000000 1.000000
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.500000
+d 1.000000
+illum 2
+map_Kd D:/projects/SBIR/SafeDropDocs/models/2x4_seamless.jpg
+
+newmtl 2x4_side
+Ns 250.000000
+Ka 1.000000 1.000000 1.000000
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.500000
+d 1.000000
+illum 2
+map_Kd D:/projects/SBIR/SafeDropDocs/models/2x4_side.jpg
+
+newmtl Plywood_end_grain
+Ns 250.000000
+Ka 1.000000 1.000000 1.000000
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.500000
+d 1.000000
+illum 2
+map_Kd D:/projects/SBIR/SafeDropDocs/models/plywood_end_grain.jpg
+
+newmtl cardboard_face
+Ns 250.000000
+Ka 1.000000 1.000000 1.000000
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.450000
+d 1.000000
+illum 2
+map_Kd D:/projects/SBIR/SafeDropDocs/models/honeycomb_face_caps.jpg
+
+newmtl cardboard_sides
+Ns 250.000000
+Ka 1.000000 1.000000 1.000000
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.450000
+d 1.000000
+illum 2
+map_Kd D:/projects/SBIR/SafeDropDocs/models/cardboard_side_repeateable.jpg
+
+newmtl cardboard_top.001
+Ns 250.000000
+Ka 1.000000 1.000000 1.000000
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.450000
+d 1.000000
+illum 2
+map_Kd D:/projects/SBIR/SafeDropDocs/models/tile_cardboard.jpg
+
+newmtl plywood_face
+Ns 250.000000
+Ka 1.000000 1.000000 1.000000
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.500000
+d 1.000000
+illum 2
+map_Kd D:/projects/SBIR/SafeDropDocs/models/oak-wood-texture-design-background.jpg
